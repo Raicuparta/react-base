@@ -3,6 +3,7 @@ import Home from './scenes/Home'
 import Topics from './scenes/Topics'
 import Users from './scenes/Users'
 import TodoPage from './scenes/TodoPage'
+import Profile from './scenes/Profile'
 import TopMenu from './components/TopMenu'
 import {
   BrowserRouter as Router,
@@ -23,9 +24,10 @@ const App = () => (
       <TopMenu items={topMenuItems}/>
       <Grid>
         <Route exact path="/" component={Home}/>
-        <Route path="/users" component={Users}/>
+        <Route exact path="/users" component={Users}/>
         <Route path="/topics" component={Topics}/>
         <Route path="/todos" component={TodoPage}/>
+        <Route path={'/users/:userId'} component={Profile}/>
       </Grid>
     </div>
   </Router>
