@@ -6,7 +6,9 @@ import TodoCounter from '../containers/TodoCounter'
 
 const TopMenu = ({ items, onTopMenuClick }) => (
   <div>
-    <div className="header-image"/>
+    <div className="header-image" style={{
+      backgroundImage: 'url(' + require('../field.jpg') + ')'
+    }}/>
     <Navbar staticTop={true}>
       <Nav>
       {items.map(item =>

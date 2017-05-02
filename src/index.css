@@ -6,7 +6,6 @@ body {
 
 .header-image {
   height: 150px;
-  background: url("https://static.pexels.com/photos/81413/tree-field-horizon-countryside-81413.jpeg")
-  no-repeat top center fixed;
+  background: no-repeat top center fixed;
   background-size: cover;
 }
