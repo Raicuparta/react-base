@@ -7,8 +7,6 @@ import { compose, createStore } from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import appReducers from './reducers'
 
-
-
 const initialState = {}
 
 let store = createStore(

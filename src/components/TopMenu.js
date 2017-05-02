@@ -1,6 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Navbar, Nav } from 'react-bootstrap'
 import MenuItem from './MenuItem'
+import TodoCounter from '../containers/TodoCounter'
 
 const TopMenu = ({ items, onTopMenuClick }) => (
   <div>
@@ -15,9 +17,19 @@ const TopMenu = ({ items, onTopMenuClick }) => (
           exact={item.exact}
         />
       )}
+      <TodoCounter/>
       </Nav>
     </Navbar>
   </div>
 )
+
+TopMenu.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    path: PropTypes.string,
+    exact: PropTypes.bool
+  })),
+  onTopMenuClick: PropTypes.func
+}
 
 export default TopMenu
