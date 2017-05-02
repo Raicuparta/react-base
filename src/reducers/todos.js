@@ -30,6 +30,8 @@ const todos = (state = [], action) => {
       return state.map(t =>
         todo(t, action)
       )
+    case 'CLEAR_TODOS':
+      return []
     default:
       return state
   }

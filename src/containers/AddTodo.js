@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { addTodo, clearTodos } from '../actions'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 
 let AddTodo = ({ dispatch }) => {
@@ -25,6 +25,8 @@ let AddTodo = ({ dispatch }) => {
           </FormGroup>
           {' '}
           <Button type="submit">Add Todo</Button>
+          {' '}
+          <Button onClick={() => {dispatch(clearTodos())}}>Clear List</Button>
         </Navbar.Form>
       </form>
     </Navbar>

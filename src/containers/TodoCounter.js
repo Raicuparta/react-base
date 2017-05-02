@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Label, NavItem } from 'react-bootstrap'
+import { NavItem } from 'react-bootstrap'
 
 const Counter = ({ label }) => (
   <NavItem disabled>{label}</NavItem>
