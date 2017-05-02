@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, Image } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import MenuItem from './MenuItem'
 
 const TopMenu = ({ items, onTopMenuClick }) => (

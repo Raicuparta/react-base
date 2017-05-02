@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Route,
-  Link
-} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Topic from '../components/Topic'
 import { Row, Nav, Col, Well, Panel } from 'react-bootstrap'
 import MenuItem from '../components/MenuItem'
@@ -13,7 +10,6 @@ export default class Topics extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const { activeItem } = this.state
     return (
       <Row>
         <Col sm={4}>

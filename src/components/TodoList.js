@@ -2,12 +2,14 @@ import React, { PropTypes } from 'react'
 import Todo from './Todo'
 import { ListGroup, Col } from 'react-bootstrap'
 
+let itemCount = 0
+
 const TodoList = ({ todos, onTodoClick }) => (
   <Col sm={4}>
     <ListGroup>
-      {todos.map(todo =>
+      { todos.map(todo =>
         <Todo
-          key={todo.id}
+          key={itemCount++}
           {...todo}
           onClick={() => onTodoClick(todo.id)}
         />
