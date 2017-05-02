@@ -11,7 +11,7 @@ const TodoList = ({ todos, onTodoClick }) => (
         <Todo
           key={itemCount++}
           {...todo}
-          onClick={() => onTodoClick(todo.id)}
+          onClick={() => onTodoClick(todo.text)}
         />
       )}
     </ListGroup>
@@ -20,7 +20,6 @@ const TodoList = ({ todos, onTodoClick }) => (
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
