@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavItem } from 'react-bootstrap'
 
-const Counter = ({ label }) => (
+const TodoCounter = ({ label }) => (
   <NavItem disabled>{label}</NavItem>
 )
 
@@ -10,8 +10,4 @@ const mapStateToProps = (state) => ({
   label: state.todos.length
 })
 
-const TodoCounter = connect(
-  mapStateToProps
-)(Counter)
-
-export default TodoCounter
+export default connect(mapStateToProps)(TodoCounter)
