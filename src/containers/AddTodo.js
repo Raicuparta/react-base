@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
-import { FormGroup, FormControl, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 
 let AddTodo = ({ dispatch }) => {
   let input
 
   return (
-    <div>
+    <Navbar>
       <form onSubmit={e => {
         e.preventDefault()
         if (!input.value.trim()) {
@@ -16,22 +16,18 @@ let AddTodo = ({ dispatch }) => {
         dispatch(addTodo(input.value))
         input.value = ''
       }}>
-
-        <FormGroup>
-          <FormControl
-            type="text"
-            placeholder="Enter text"
-            inputRef={node => {
-              input = node
-            }}
-          />
-          <Button type="submit">
-            Add Todo
-          </Button>
-        </FormGroup>
-
+        <Navbar.Form>
+          <FormGroup>
+            <FormControl type="text" placeholder="Enter text"
+              inputRef={node => {
+                input = node
+              }}/>
+          </FormGroup>
+          {' '}
+          <Button type="submit">Add Todo</Button>
+        </Navbar.Form>
       </form>
-    </div>
+    </Navbar>
   )
 }
 AddTodo = connect()(AddTodo)
