@@ -13,11 +13,11 @@ import {
 import { Grid } from 'react-bootstrap'
 
 const topMenuItems = [
-  {name: 'Home', path: '/', exact: true},
-  {name: 'Users', path: '/users'},
-  {name: 'Topics', path: '/topics'},
-  {name: 'Comments', path: '/comments'},
-  {name: 'To-Dos', path: '/todos'},
+  {name: 'Home', path: '/', exact: true, icon: 'home'},
+  {name: 'Users', path: '/users', icon: 'user'},
+  {name: 'Topics', path: '/topics', icon: 'list'},
+  {name: 'Comments', path: '/comments', icon: 'comment'},
+  {name: 'To-Dos', path: '/todos', icon: 'list-alt'},
 ]
 
 const App = () => (

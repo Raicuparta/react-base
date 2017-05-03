@@ -4,8 +4,8 @@ import { setSortOrder } from '../actions/SortActions'
 
 const SortLink = ({ dispatch, name, sortBy }) => {
   return (
-    <th>
-      <a onClick={() => {dispatch(setSortOrder(sortBy))}}>{name}</a>
+    <th onClick={() => {dispatch(setSortOrder(sortBy))}}>
+      <a>{name}</a>
     </th>
   )
 }

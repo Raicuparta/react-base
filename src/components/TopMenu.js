@@ -19,6 +19,7 @@ const TopMenu = ({ items, onTopMenuClick }) => (
           key={item.path}
           name={item.name}
           exact={item.exact}
+          icon={item.icon}
         />
       )}
       <TodoCounter/>

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavItem } from 'react-bootstrap'
+import { NavItem, Glyphicon } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-const MenuItem = ({ name, path = '', exact }) => (
+const MenuItem = ({ name, path = '', exact, icon = '' }) => (
 	<LinkContainer to={path} exact={exact}>
-    <NavItem>{name}</NavItem>
+    <NavItem><Glyphicon glyph={icon} />   {name}</NavItem>
   </LinkContainer>
 )
 
