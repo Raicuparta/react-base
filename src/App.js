@@ -30,8 +30,7 @@ const App = () => (
         <Route path="/topics" component={Topics}/>
         <Route path="/todos" component={TodoPage}/>
         <Route path={'/users/:userId'} component={Profile}/>
-        <Route path={'/comments/:page'} component={Comments}/>
-        <Route path={'/comments'} component={Comments}/>
+        <Route path={'/comments/:page?'} component={Comments}/>
       </Grid>
     </div>
   </Router>

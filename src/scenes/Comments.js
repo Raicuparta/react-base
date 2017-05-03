@@ -1,18 +1,14 @@
 import React from 'react'
-import { Table, Pagination } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
+import PaginatedPage from '../containers/PaginatedPage'
 
 // Ideally, you'd want to fetch these values from the server.
 // But I didn't feel like parsing the HTML headers so I'll
 // just hardcode them for now.
 const TOTAL_PAGES = 50
-const ITEMS_PER_PAGE = 10
+const MAX_ITEMS = 10
 
 class Comments extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {page: props.match.params.page || 1}
-  }
-
   render () {
     let comments = []
     if (this.state && this.state.comments) comments = this.state.comments.map((comment) => (
@@ -23,7 +19,13 @@ class Comments extends React.Component {
       </tr>
     ))
     return (
-      <div>
+      <PaginatedPage
+        fetchUrl='https://jsonplaceholder.typicode.com/comments'
+        fetchCallback={(json, page) => this.fetchCallback(json, page)}
+        totalPages={TOTAL_PAGES}
+        maxItems={MAX_ITEMS}
+        currentUrl={'/comments/'}
+        page={this.props.match.params.page}>
         <h2>Comments</h2>
         <Table striped bordered hover>
           <thead>
@@ -37,32 +39,11 @@ class Comments extends React.Component {
             {comments}
           </tbody>
         </Table>
-
-        <Pagination first last next prev
-          bsSize="medium"
-          items={TOTAL_PAGES}
-          activePage={Number.parseInt(this.state.page, 10)}
-          maxButtons={10}
-          onSelect={(e) => {this.props.history.push('/comments/' + e); this.fetchPage(e)}} />
-        <br />
-
-      </div>
-
+      </PaginatedPage>
     )}
 
-  componentDidMount() {
-    this.fetchPage(this.state.page)
-  }
-
-  fetchPage(page) {
-    fetch('https://jsonplaceholder.typicode.com/comments?_page=' + page + '&_limit=' + ITEMS_PER_PAGE + '&_sort=id')
-      .then(function(response) {
-        return response.json()
-      }).then((json) => {
-        this.setState({comments: json, page: page})
-      }).catch(function(ex) {
-        console.log('parsing failed', ex)
-      })
+  fetchCallback(json, page) {
+    this.setState({comments: json, page: page})
   }
 }
 
