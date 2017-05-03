@@ -16,6 +16,7 @@ const topMenuItems = [
   {name: 'Home', path: '/', exact: true},
   {name: 'Users', path: '/users'},
   {name: 'Topics', path: '/topics'},
+  {name: 'Comments', path: '/comments'},
   {name: 'To-Dos', path: '/todos'},
 ]
 
@@ -30,6 +31,7 @@ const App = () => (
         <Route path="/todos" component={TodoPage}/>
         <Route path={'/users/:userId'} component={Profile}/>
         <Route path={'/comments/:page'} component={Comments}/>
+        <Route path={'/comments'} component={Comments}/>
       </Grid>
     </div>
   </Router>

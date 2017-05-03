@@ -8,6 +8,11 @@ const TOTAL_PAGES = 50
 const ITEMS_PER_PAGE = 10
 
 class Comments extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {page: props.match.params.page || 1}
+  }
+
   render () {
     let comments = []
     if (this.state && this.state.comments) comments = this.state.comments.map((comment) => (
@@ -36,7 +41,7 @@ class Comments extends React.Component {
         <Pagination first last next prev
           bsSize="medium"
           items={TOTAL_PAGES}
-          activePage={Number.parseInt(this.props.match.params.page, 10)}
+          activePage={Number.parseInt(this.state.page, 10)}
           maxButtons={10}
           onSelect={(e) => {this.props.history.push('/comments/' + e); this.fetchPage(e)}} />
         <br />
@@ -46,7 +51,7 @@ class Comments extends React.Component {
     )}
 
   componentDidMount() {
-    this.fetchPage(this.props.match.params.page)
+    this.fetchPage(this.state.page)
   }
 
   fetchPage(page) {
@@ -54,7 +59,7 @@ class Comments extends React.Component {
       .then(function(response) {
         return response.json()
       }).then((json) => {
-        this.setState({comments: json})
+        this.setState({comments: json, page: page})
       }).catch(function(ex) {
         console.log('parsing failed', ex)
       })
