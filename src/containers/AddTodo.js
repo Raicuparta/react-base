@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addTodo, clearTodos } from '../actions'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 
-let AddTodo = ({ dispatch }) => {
+const AddTodo = ({ dispatch }) => {
   let input
 
   return (
@@ -32,6 +32,5 @@ let AddTodo = ({ dispatch }) => {
     </Navbar>
   )
 }
-AddTodo = connect()(AddTodo)
 
-export default AddTodo
+export default connect()(AddTodo)

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import PaginatedPage from '../containers/PaginatedPage'
+import SortLink from '../components/SortLink'
 
 // Ideally, you'd want to fetch these values from the server.
 // But I didn't feel like parsing the HTML headers so I'll
@@ -30,9 +31,9 @@ class Comments extends React.Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Comment</th>
+              <SortLink name='ID' sortBy='id' />
+              <SortLink name='Name' sortBy='name' />
+              <SortLink name='Comment' sortBy='body' />
             </tr>
           </thead>
           <tbody>
@@ -45,6 +46,7 @@ class Comments extends React.Component {
   fetchCallback(json, page) {
     this.setState({comments: json, page: page})
   }
+
 }
 
 export default Comments

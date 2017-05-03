@@ -1,11 +1,14 @@
 import React from 'react'
 import { Pagination } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class PaginatedPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {page: props.page || 1}
+    this.state = {
+      page: props.page || 1
+    }
   }
 
   render () {
@@ -22,8 +25,13 @@ class PaginatedPage extends React.Component {
     this.fetchPage(this.state.page)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.changeSort)
+      this.fetchPage(this.state.page)
+  }
+
   fetchPage(page) {
-    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=id')
+    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + this.props.sort + '&_order=' + (this.props.desc ? 'DESC' : 'ASC'))
       .then(function(response) {
         return response.json()
       }).then((json) => {
@@ -35,13 +43,21 @@ class PaginatedPage extends React.Component {
   }
 }
 
-export default PaginatedPage
-
 const PaginationContainer = withRouter(({ history, totalPages, page, onSelect, currentUrl }) => (
   <Pagination first last next prev
     bsSize="medium"
     items={totalPages}
     activePage={Number.parseInt(page, 10)}
     maxButtons={10}
-    onSelect={(e) => {history.push(currentUrl + e); onSelect(e)}} />
+    onSelect={(e) => {
+      history.push(currentUrl + e)
+      onSelect(e)
+    }}/>
 ))
+
+const mapStateToProps = (state) => ({
+  sort: state.sortOrder.sort,
+  desc: state.sortOrder.desc
+})
+
+export default connect(mapStateToProps)(PaginatedPage)

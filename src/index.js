@@ -7,14 +7,16 @@ import { compose, createStore } from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import appReducers from './reducers'
 
-const initialState = {}
+const initialState = {
+  sortOrder: {}
+}
 
 let store = createStore(
   appReducers,
   initialState,
   compose(
     autoRehydrate(),
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
 
