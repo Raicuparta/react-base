@@ -2,12 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 
 class Profile extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render () {
-    let info = null
     if (this.state) return (
       <div>
         <h2>{this.state.name}</h2>

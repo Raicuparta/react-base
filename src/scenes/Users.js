@@ -3,10 +3,6 @@ import User from '../components/User'
 import { Table } from 'react-bootstrap'
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render () { 
     let users = []
     if (this.state && this.state.users) users = this.state.users.map((user) => (
@@ -29,7 +25,6 @@ class Users extends React.Component {
           </tbody>
         </Table>
       </div>
-
     )}
 
   componentDidMount() {
