@@ -9,17 +9,29 @@ class PaginatedPage extends React.Component {
     this.state = {
       page: props.page || 1
     }
+
+    this.PaginationContainer = withRouter(({ history }) => (
+      <Pagination first last next prev
+        bsSize="medium"
+        items={props.totalPages}
+        activePage={Number.parseInt(this.state.page, 10)}
+        maxButtons={10}
+        onSelect={(e) => {
+          history.push(props.currentUrl + e)
+          this.fetchPage(e)
+        }}/>
+    ))
   }
 
   render () {
-    let paginationContainer = <PaginationContainer totalPages={this.props.totalPages} page={this.state.page} onSelect={(e) => this.fetchPage(e)} currentUrl={this.props.currentUrl}/>
     return (
       <div>
-        {paginationContainer}
+        <this.PaginationContainer />
         {this.props.children}
-        {paginationContainer}
+        <this.PaginationContainer />
       </div>
-    )}
+    )
+  }
 
   componentDidMount() {
     this.fetchPage(this.state.page)
@@ -37,18 +49,6 @@ class PaginatedPage extends React.Component {
       })
   }
 }
-
-const PaginationContainer = withRouter(({ history, totalPages, page, onSelect, currentUrl }) => (
-  <Pagination first last next prev
-    bsSize="medium"
-    items={totalPages}
-    activePage={Number.parseInt(page, 10)}
-    maxButtons={10}
-    onSelect={(e) => {
-      history.push(currentUrl + e)
-      onSelect(e)
-    }}/>
-))
 
 const mapStateToProps = (state) => ({
   sort: state.sortOrder.sort,
