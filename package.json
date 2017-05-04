@@ -19,12 +19,13 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "__comment_deploy": "gh-pages -d build",
+    "deploy": "npm build && surge -p build --domain raicuparta.surge.sh"
   },
-  "homepage": "https://raicuparta.github.io/react-base/"
+  "__comment_homepage": "https://raicuparta.github.io/react-base/"
 }

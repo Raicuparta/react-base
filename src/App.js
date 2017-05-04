@@ -5,10 +5,12 @@ import Users from './scenes/Users'
 import TodoPage from './scenes/TodoPage'
 import Profile from './scenes/Profile'
 import Comments from './scenes/Comments'
+import NotFound from './scenes/NotFound'
 import TopMenu from './components/TopMenu'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 import { Grid } from 'react-bootstrap'
 
@@ -25,12 +27,15 @@ const App = () => (
     <div>
       <TopMenu items={topMenuItems}/>
       <Grid>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/users" component={Users}/>
-        <Route path="/topics" component={Topics}/>
-        <Route path="/todos" component={TodoPage}/>
-        <Route path={'/users/:userId'} component={Profile}/>
-        <Route path={'/comments/:page?'} component={Comments}/>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/users" component={Users}/>
+          <Route path="/topics" component={Topics}/>
+          <Route path="/todos" component={TodoPage}/>
+          <Route path={'/users/:userId'} component={Profile}/>
+          <Route path={'/comments/:page?'} component={Comments}/>
+          <Route component={NotFound}/>
+        </Switch>
       </Grid>
     </div>
   </Router>
