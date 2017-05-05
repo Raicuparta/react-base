@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Todo from './Todo'
 import { ListGroup, Col } from 'react-bootstrap'
+
+import Todo from './Todo'
 
 let itemCount = 0
 

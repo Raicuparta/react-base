@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Navbar, Nav } from 'react-bootstrap'
+
 import MenuItem from './MenuItem'
 import TodoCounter from '../containers/TodoCounter'
 

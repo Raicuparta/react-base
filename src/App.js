@@ -1,4 +1,11 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+import { Grid } from 'react-bootstrap'
+
 import Home from './scenes/Home'
 import Topics from './scenes/Topics'
 import Users from './scenes/Users'
@@ -8,12 +15,6 @@ import Comments from './scenes/Comments'
 import Photos from './scenes/Photos'
 import NotFound from './scenes/NotFound'
 import TopMenu from './components/TopMenu'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom'
-import { Grid } from 'react-bootstrap'
 
 const topMenuItems = [
   {name: 'Home', path: '/', exact: true, icon: 'home'},

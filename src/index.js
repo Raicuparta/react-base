@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
 import { Provider } from 'react-redux'
 import { compose, createStore } from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
+
+import App from './App';
+import './index.css';
 import appReducers from './reducers'
 
 const initialState = {

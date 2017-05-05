@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
+
 import PaginatedPage from '../containers/PaginatedPage'
 import SortLink from '../components/SortLink'
 

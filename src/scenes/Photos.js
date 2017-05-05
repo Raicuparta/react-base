@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col, Thumbnail } from 'react-bootstrap'
+
 import PaginatedPage from '../containers/PaginatedPage'
 
 // Ideally, you'd want to fetch these values from the server.

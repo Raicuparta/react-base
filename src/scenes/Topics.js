@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import Topic from '../components/Topic'
 import { Row, Nav, Col, Well, Panel } from 'react-bootstrap'
+
+import Topic from '../components/Topic'
 import MenuItem from '../components/MenuItem'
 
 export default class Topics extends Component {

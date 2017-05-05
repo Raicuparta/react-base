@@ -1,6 +1,7 @@
 import React from 'react'
-import User from '../components/User'
 import { Table } from 'react-bootstrap'
+
+import User from '../components/User'
 
 class Users extends React.Component {
   render () { 
