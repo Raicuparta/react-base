@@ -27,5 +27,5 @@
     "deploy-gh": "gh-pages -d build",
     "deploy": "npm build && cd build && cp index.html 200.html && cd .. && surge -p build --domain https://raicuparta.surge.sh"
   },
-  "homepage": "https://raicuparta.github.io/react-base/"
+  "_comment_homepage": "https://raicuparta.github.io/react-base/"
 }
