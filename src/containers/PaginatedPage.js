@@ -2,8 +2,28 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class PaginatedPage extends React.Component {
+  static propTypes = {
+    totalPages: PropTypes.number,
+    page: PropTypes.number,
+    maxItems: PropTypes.number,
+    currentUrl: PropTypes.string.isRequired,
+    fetchUrl: PropTypes.string.isRequired,
+    sort: PropTypes.string,
+    desc: PropTypes.bool,
+    fetchCallback: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    totalPages: 1,
+    page: 1,
+    maxItems: 10,
+    sort: '',
+    desc: false
+  }
+
   state = {
     page: this.props.page || 1
   }
