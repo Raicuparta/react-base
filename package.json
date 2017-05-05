@@ -24,8 +24,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "__comment_deploy": "gh-pages -d build",
-    "deploy": "npm build && cd build && cp index.html 200.html && cd .. && surge -p build --domain raicuparta.surge.sh"
+    "deploy-gh": "gh-pages -d build",
+    "deploy": "npm build && cd build && cp index.html 200.html && cd .. && surge -p build --domain https://raicuparta.surge.sh"
   },
-  "__comment_homepage": "https://raicuparta.github.io/react-base/"
+  "homepage": "https://raicuparta.github.io/react-base/"
 }
