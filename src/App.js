@@ -5,6 +5,7 @@ import Users from './scenes/Users'
 import TodoPage from './scenes/TodoPage'
 import Profile from './scenes/Profile'
 import Comments from './scenes/Comments'
+import Photos from './scenes/Photos'
 import NotFound from './scenes/NotFound'
 import TopMenu from './components/TopMenu'
 import {
@@ -19,6 +20,7 @@ const topMenuItems = [
   {name: 'Users', path: '/users', icon: 'user'},
   {name: 'Topics', path: '/topics', icon: 'list'},
   {name: 'Comments', path: '/comments', icon: 'comment'},
+  {name: 'Photos', path: '/photos', icon: 'camera'},
   {name: 'To-Dos', path: '/todos', icon: 'list-alt'},
 ]
 
@@ -34,6 +36,7 @@ const App = () => (
           <Route path="/todos" component={TodoPage}/>
           <Route path={'/users/:userId'} component={Profile}/>
           <Route path={'/comments/:page?'} component={Comments}/>
+          <Route path={'/photos/:page?'} component={Photos}/>
           <Route component={NotFound}/>
         </Switch>
       </Grid>

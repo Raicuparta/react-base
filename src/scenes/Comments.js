@@ -10,9 +10,14 @@ const TOTAL_PAGES = 50
 const MAX_ITEMS = 10
 
 class Comments extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {comments: []}
+  }
+
   render () {
     let comments = []
-    if (this.state && this.state.comments) comments = this.state.comments.map((comment) => (
+    comments = this.state.comments.map((comment) => (
       <tr key={comment.id}>
         <td>{comment.id}</td>
         <td>{comment.name}</td>
