@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { compose, createStore } from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 
-import App from './App';
-import './index.css';
+import App from './App'
+import './index.css'
 import appReducers from './reducers'
 
 const initialState = {
@@ -28,4 +28,4 @@ ReactDOM.render(
   	<App />
   </Provider>,
   document.getElementById('root')
-);
+)
