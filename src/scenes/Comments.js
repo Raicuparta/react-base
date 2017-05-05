@@ -10,10 +10,7 @@ const TOTAL_PAGES = 50
 const MAX_ITEMS = 10
 
 class Comments extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {comments: []}
-  }
+  state = {comments: []}
 
   render () {
     let comments = []

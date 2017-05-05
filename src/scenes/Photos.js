@@ -9,10 +9,7 @@ const TOTAL_PAGES = 417
 const MAX_ITEMS = 12
 
 class Photos extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {photos: []}
-  }
+  state = {photos: []}
 
   render () {
     let photos = []

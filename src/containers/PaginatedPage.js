@@ -4,11 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class PaginatedPage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      page: props.page || 1
-    }
+  state = {
+    page: this.props.page || 1
   }
 
   PaginationContainer = withRouter(({ history }) => (
