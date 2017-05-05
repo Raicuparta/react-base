@@ -13,8 +13,7 @@ class Photos extends React.Component {
   state = {photos: []}
 
   render () {
-    let photos = []
-    photos = this.state.photos.map((photo) => (
+    const photos = this.state.photos.map((photo) => (
       <Col xs={3} md={2} key={photo.id}>
         <Thumbnail href={photo.url} alt={photo.title} src={photo.thumbnailUrl}>
           <h4>{photo.title.split(' ')[0]}</h4>

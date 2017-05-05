@@ -14,8 +14,7 @@ class Comments extends React.Component {
   state = {comments: []}
 
   render () {
-    let comments = []
-    comments = this.state.comments.map((comment) => (
+    const comments = this.state.comments.map((comment) => (
       <tr key={comment.id}>
         <td>{comment.id}</td>
         <td>{comment.name}</td>

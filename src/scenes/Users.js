@@ -4,9 +4,10 @@ import { Table } from 'react-bootstrap'
 import User from '../components/User'
 
 class Users extends React.Component {
+  state = {users: []}
+
   render () { 
-    let users = []
-    if (this.state && this.state.users) users = this.state.users.map((user) => (
+    const users = this.state.users.map((user) => (
       <User info={user} key={user.id}/>
     ))
     return (

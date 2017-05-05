@@ -12,7 +12,7 @@ const initialState = {
   sortOrder: {}
 }
 
-let store = createStore(
+const store = createStore(
   appReducers,
   initialState,
   compose(
