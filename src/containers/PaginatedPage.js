@@ -9,19 +9,19 @@ class PaginatedPage extends React.Component {
     this.state = {
       page: props.page || 1
     }
-
-    this.PaginationContainer = withRouter(({ history }) => (
-      <Pagination first last next prev
-        bsSize="medium"
-        items={props.totalPages}
-        activePage={Number.parseInt(this.state.page, 10)}
-        maxButtons={10}
-        onSelect={(e) => {
-          history.push(props.currentUrl + e)
-          this.fetchPage(e)
-        }}/>
-    ))
   }
+
+  PaginationContainer = withRouter(({ history }) => (
+    <Pagination first last next prev
+      bsSize="medium"
+      items={this.props.totalPages}
+      activePage={Number.parseInt(this.state.page, 10)}
+      maxButtons={10}
+      onSelect={(e) => {
+        history.push(this.props.currentUrl + e)
+        this.fetchPage(e)
+      }}/>
+  ))
 
   render () {
     return (
