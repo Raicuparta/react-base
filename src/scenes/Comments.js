@@ -24,7 +24,7 @@ class Comments extends React.Component {
     return (
       <PaginatedPage
         fetchUrl='https://jsonplaceholder.typicode.com/comments'
-        fetchCallback={(json, page) => this.fetchCallback(json, page)}
+        fetchCallback={this.fetchCallback}
         totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/comments/'}
@@ -45,7 +45,7 @@ class Comments extends React.Component {
       </PaginatedPage>
     )}
 
-  fetchCallback(json, page) {
+  fetchCallback = (json, page) => {
     this.setState({comments: json, page: page})
   }
 

@@ -23,7 +23,7 @@ class Photos extends React.Component {
     return (
       <PaginatedPage
         fetchUrl='https://jsonplaceholder.typicode.com/photos'
-        fetchCallback={(json, page) => this.fetchCallback(json, page)}
+        fetchCallback={this.fetchCallback}
         totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/photos/'}
@@ -37,7 +37,7 @@ class Photos extends React.Component {
       </PaginatedPage>
     )}
 
-  fetchCallback(json, page) {
+  fetchCallback = (json, page) => {
     this.setState({photos: json, page: page})
   }
 
