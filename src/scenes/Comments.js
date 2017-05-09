@@ -71,7 +71,7 @@ class Comments extends React.Component {
   }
 
   CommentList = () => (
-    <Table striped bordered hover>
+    <Table striped hover>
       <thead>
         <tr>
           <SortLink name='ID' sortBy='id' />
