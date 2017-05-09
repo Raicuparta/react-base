@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Navbar, FormGroup, FormControl, Button } from 'react-bootstrap'
+import { Table, Navbar, FormGroup, FormControl, Button, Well } from 'react-bootstrap'
 
 import PaginatedPage from '../containers/PaginatedPage'
 import SortLink from '../components/SortLink'
@@ -14,13 +14,6 @@ class Comments extends React.Component {
   state = {comments: [], search: ''}
 
   render () {
-    const comments = this.state.comments.map((comment) => (
-      <tr key={comment.id}>
-        <td>{comment.id}</td>
-        <td>{comment.name}</td>
-        <td>{comment.body}</td>
-      </tr>
-    ))
     return (
       <PaginatedPage
         fetchUrl='https://jsonplaceholder.typicode.com/comments'
@@ -50,18 +43,7 @@ class Comments extends React.Component {
         </Navbar>
 
         <h2>Comments</h2>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <SortLink name='ID' sortBy='id' />
-              <SortLink name='Name' sortBy='name' />
-              <SortLink name='Comment' sortBy='body' />
-            </tr>
-          </thead>
-          <tbody>
-            {comments}
-          </tbody>
-        </Table>
+        <this.Comments />
       </PaginatedPage>
     )}
 
@@ -80,6 +62,33 @@ class Comments extends React.Component {
   clearSearch = () => {
     this.setState({search: ''})
   }
+
+  Comments = () => {
+    if (this.state.comments.length > 0)
+      return <this.CommentList />
+    else
+      return <Well>No comments found</Well>
+  }
+
+  CommentList = () => (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <SortLink name='ID' sortBy='id' />
+          <SortLink name='Name' sortBy='name' />
+          <SortLink name='Comment' sortBy='body' />
+        </tr>
+      </thead>
+      <tbody>
+        {this.state.comments.map((comment) => (
+        <tr key={comment.id}>
+          <td>{comment.id}</td>
+          <td>{comment.name}</td>
+          <td>{comment.body}</td>
+        </tr>))}
+      </tbody>
+    </Table>
+  )
 
 }
 
