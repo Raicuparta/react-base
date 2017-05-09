@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pagination } from 'react-bootstrap'
+import { Pagination, ProgressBar } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -25,14 +25,15 @@ class PaginatedPage extends React.Component {
   }
 
   state = {
-    page: this.props.page || 1
+    page: this.props.page,
+    loading: false
   }
 
   PaginationContainer = withRouter(({ history }) => (
     <Pagination first last next prev
       bsSize="medium"
       items={this.props.totalPages}
-      activePage={Number.parseInt(this.state.page, 10)}
+      activePage={this.state.page}
       maxButtons={10}
       onSelect={(e) => {
         history.push(this.props.currentUrl + e)
@@ -43,6 +44,7 @@ class PaginatedPage extends React.Component {
   render () {
     return (
       <div>
+        <ProgressBar active now={this.state.loading ? 100 : 0} />
         <this.PaginationContainer />
         {this.props.children}
         <this.PaginationContainer />
@@ -55,11 +57,12 @@ class PaginatedPage extends React.Component {
   }
 
   fetchPage(page) {
+    this.setState({loading: true, page: page})
     fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + this.props.sort + '&_order=' + (this.props.desc ? 'DESC' : 'ASC'))
-      .then(function(response) {
+      .then((response) => {
         return response.json()
       }).then((json) => {
-        this.setState({page: page})
+        this.setState({loading: false})
         this.props.fetchCallback(json, page)
       }).catch(function(ex) {
         console.log('parsing failed', ex)

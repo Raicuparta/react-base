@@ -28,7 +28,7 @@ class Comments extends React.Component {
         totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/comments/'}
-        page={this.props.match.params.page}>
+        page={Number.parseInt(this.props.match.params.page, 10) || 1}>
         <h2>Comments</h2>
         <Table striped bordered hover>
           <thead>

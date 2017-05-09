@@ -27,7 +27,7 @@ class Photos extends React.Component {
         totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/photos/'}
-        page={this.props.match.params.page}>
+        page={Number.parseInt(this.props.match.params.page, 10) || 1}>
         <h2>Photos</h2>
         <Grid>
           <Row>
