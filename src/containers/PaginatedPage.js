@@ -52,7 +52,7 @@ class PaginatedPage extends React.Component {
           </Col>
           <Col md={5}>
             <Fade in={this.state.loading}>
-              <ProgressBar active now={100}/>
+              <ProgressBar active now={100} label="Loading..."/>
             </Fade>
           </Col>
         </Row>
