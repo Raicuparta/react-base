@@ -66,7 +66,7 @@ class PaginatedPage extends React.Component {
     this.fetchPage(this.state.page)
   }
 
-  fetchPage(page) {
+  fetchPage = (page) => {
     this.setState({loading: true, page: page})
     fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + this.props.sort + '&_order=' + (this.props.desc ? 'DESC' : 'ASC') + this.props.search)
       .then((response) => {
