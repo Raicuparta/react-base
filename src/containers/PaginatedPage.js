@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pagination, ProgressBar } from 'react-bootstrap'
+import { Pagination, ProgressBar, Col, Row, Fade } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -31,10 +31,11 @@ class PaginatedPage extends React.Component {
 
   PaginationContainer = withRouter(({ history }) => (
     <Pagination first last next prev
-      bsSize="medium"
+      bsSize='small'
       items={this.props.totalPages}
       activePage={this.state.page}
       maxButtons={10}
+      bsClass='pagination'
       onSelect={(e) => {
         history.push(this.props.currentUrl + e)
         this.fetchPage(e)
@@ -44,8 +45,16 @@ class PaginatedPage extends React.Component {
   render () {
     return (
       <div>
-        <ProgressBar active now={this.state.loading ? 100 : 0} />
-        <this.PaginationContainer />
+        <Row>
+          <Col md={6}>
+            <this.PaginationContainer />
+          </Col>
+          <Col md={5}>
+            <Fade in={this.state.loading}>
+              <ProgressBar active now={100}/>
+            </Fade>
+          </Col>
+        </Row>
         {this.props.children}
         <this.PaginationContainer />
       </div>
