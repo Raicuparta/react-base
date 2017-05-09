@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Table, Navbar, FormGroup, FormControl, Button } from 'react-bootstrap'
 
 import PaginatedPage from '../containers/PaginatedPage'
 import SortLink from '../components/SortLink'
@@ -11,7 +11,7 @@ const TOTAL_PAGES = 50
 const MAX_ITEMS = 10
 
 class Comments extends React.Component {
-  state = {comments: []}
+  state = {comments: [], search: ''}
 
   render () {
     const comments = this.state.comments.map((comment) => (
@@ -28,7 +28,27 @@ class Comments extends React.Component {
         totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/comments/'}
-        page={Number.parseInt(this.props.match.params.page, 10) || 1}>
+        page={Number.parseInt(this.props.match.params.page, 10) || 1}
+        search={this.state.search.length > 0 ? '&id=' + this.state.search : ''}
+        key={this.state.search}>
+
+        <Navbar>
+          <form>
+            <Navbar.Form>
+              <FormGroup>
+                <FormControl
+                  type='text'
+                  defaultValue={this.state.search}
+                  placeholder='Comment ID'
+                  inputRef={this.searchRef}
+                />
+              </FormGroup>
+              {' '}
+              <Button onClick={this.clearSearch}>Clear</Button>
+            </Navbar.Form>
+          </form>
+        </Navbar>
+
         <h2>Comments</h2>
         <Table striped bordered hover>
           <thead>
@@ -47,6 +67,18 @@ class Comments extends React.Component {
 
   fetchCallback = (json, page) => {
     this.setState({comments: json, page: page})
+  }
+
+  searchRef = (ref) => {
+    if (!ref) return
+    ref.oninput = () => {
+      this.setState({search: ref.value})
+    }
+    ref.focus()
+  }
+
+  clearSearch = () => {
+    this.setState({search: ''})
   }
 
 }

@@ -13,7 +13,8 @@ class PaginatedPage extends React.Component {
     fetchUrl: PropTypes.string.isRequired,
     sort: PropTypes.string,
     desc: PropTypes.bool,
-    fetchCallback: PropTypes.func.isRequired
+    fetchCallback: PropTypes.func.isRequired,
+    search: PropTypes.string
   }
 
   static defaultProps = {
@@ -67,7 +68,7 @@ class PaginatedPage extends React.Component {
 
   fetchPage(page) {
     this.setState({loading: true, page: page})
-    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + this.props.sort + '&_order=' + (this.props.desc ? 'DESC' : 'ASC'))
+    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + this.props.sort + '&_order=' + (this.props.desc ? 'DESC' : 'ASC') + this.props.search)
       .then((response) => {
         return response.json()
       }).then((json) => {
