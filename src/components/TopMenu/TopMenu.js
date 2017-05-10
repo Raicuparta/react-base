@@ -12,19 +12,24 @@ const TopMenu = ({ items, onTopMenuClick }) => (
     }}>
       <h1>React Skeleton App</h1>
     </div>
-    <Navbar staticTop={true}>
-      <Nav>
-      {items.map(item =>
-        <MenuItem
-          path={item.path}
-          key={item.path}
-          name={item.name}
-          exact={item.exact}
-          icon={item.icon}
-        />
-      )}
-      <TodoCounter/>
-      </Nav>
+    <Navbar staticTop collapseOnSelect>
+      <Navbar.Header>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+        {items.map(item =>
+          <MenuItem
+            path={item.path}
+            key={item.path}
+            name={item.name}
+            exact={item.exact}
+            icon={item.icon}
+          />
+        )}
+        <TodoCounter/>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   </div>
 )
