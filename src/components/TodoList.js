@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import t from 'prop-types'
 import { ListGroup, Col } from 'react-bootstrap'
 
 import Todo from './Todo'
@@ -21,11 +21,11 @@ const TodoList = ({ todos, onTodoClick }) => (
 )
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.shape({
-    completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
+  todos: t.arrayOf(t.shape({
+    completed: t.bool.isRequired,
+    text: t.string.isRequired
   }).isRequired).isRequired,
-  onTodoClick: PropTypes.func.isRequired
+  onTodoClick: t.func.isRequired
 }
 
 export default TodoList

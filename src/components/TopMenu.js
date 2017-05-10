@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import t from 'prop-types'
 import { Navbar, Nav } from 'react-bootstrap'
 
 import MenuItem from './MenuItem'
@@ -30,12 +30,12 @@ const TopMenu = ({ items, onTopMenuClick }) => (
 )
 
 TopMenu.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    path: PropTypes.string,
-    exact: PropTypes.bool
+  items: t.arrayOf(t.shape({
+    name: t.string,
+    path: t.string,
+    exact: t.bool
   })),
-  onTopMenuClick: PropTypes.func
+  onTopMenuClick: t.func
 }
 
 export default TopMenu

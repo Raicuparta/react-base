@@ -2,19 +2,19 @@ import React from 'react'
 import { Pagination, ProgressBar, Col, Row, Fade } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import t from 'prop-types'
 
 class PaginatedPage extends React.Component {
   static propTypes = {
-    totalPages: PropTypes.number,
-    page: PropTypes.number,
-    maxItems: PropTypes.number,
-    currentUrl: PropTypes.string.isRequired,
-    fetchUrl: PropTypes.string.isRequired,
-    sort: PropTypes.string,
-    desc: PropTypes.bool,
-    fetchCallback: PropTypes.func.isRequired,
-    search: PropTypes.string
+    totalPages: t.number,
+    page: t.number,
+    maxItems: t.number,
+    currentUrl: t.string.isRequired,
+    fetchUrl: t.string.isRequired,
+    sort: t.string,
+    desc: t.bool,
+    fetchCallback: t.func.isRequired,
+    search: t.string
   }
 
   static defaultProps = {
@@ -22,7 +22,8 @@ class PaginatedPage extends React.Component {
     page: 1,
     maxItems: 10,
     sort: '',
-    desc: false
+    desc: false,
+    search: ''
   }
 
   state = {

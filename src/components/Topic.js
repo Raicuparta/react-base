@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import t from 'prop-types'
 
 const Topic = ({ match }) => (
   <div>
@@ -8,7 +8,7 @@ const Topic = ({ match }) => (
 )
 
 Topic.propTypes = {
-  match: PropTypes.object.isRequired
+  match: t.object.isRequired
 }
 
 export default Topic

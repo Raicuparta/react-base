@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import t from 'prop-types'
 import { ListGroupItem } from 'react-bootstrap'
 
 const Todo = ({ onClick, completed, text }) => (
@@ -14,9 +14,9 @@ const Todo = ({ onClick, completed, text }) => (
 )
 
 Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  onClick: t.func.isRequired,
+  completed: t.bool.isRequired,
+  text: t.string.isRequired
 }
 
 export default Todo

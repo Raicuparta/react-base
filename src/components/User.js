@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import t from 'prop-types'
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -14,11 +14,11 @@ const User = ({ info }) => (
 )
 
 User.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({  
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    website: PropTypes.string
+  users: t.arrayOf(t.shape({  
+    id: t.number.isRequired,
+    name: t.string.isRequired,
+    username: t.string.isRequired,
+    website: t.string
   }))
 }
 
