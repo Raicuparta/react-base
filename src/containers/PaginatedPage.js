@@ -62,7 +62,10 @@ class PaginatedPage extends React.Component {
     )
   }
 
-  componentDidMount = () => this.fetchPage(this.props.page)
+  componentDidMount() {this.fetchPage(this.props.page)}
+
+  cancelFetch = false
+  componentWillUnmount() {this.cancelFetch = true}
 
   fetchPage = (page) => {
     this.setState({loading: true, page: page})
@@ -70,6 +73,7 @@ class PaginatedPage extends React.Component {
       .then((response) => {
         return response.json()
       }).then((json) => {
+        if (this.cancelFetch) return
         this.setState({loading: false})
         this.props.fetchCallback(json, page)
       }).catch(function(ex) {

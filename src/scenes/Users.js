@@ -29,12 +29,15 @@ class Users extends React.Component {
       </div>
     )}
 
+  cancelFetch = false
+  componentWillUnmount() {this.cancelFetch = true}
+
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(function(response) {
         return response.json()
       }).then((json) => {
-        console.log('parsed json', json)
+        if (this.cancelFetch) return
         this.setState({users: json})
       }).catch(function(ex) {
         console.log('parsing failed', ex)
