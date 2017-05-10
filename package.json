@@ -17,14 +17,17 @@
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-devtools": "^2.1.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "sw-precache": "^5.1.1"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
+    "build-pwa": "react-scripts build && sw-precache --config=sw-precache-config.js",
+    "deploy-pwa": "npm run build-pwa && cd build && cp index.html 200.html && cd .. && surge -p build --domain https://raicuparta.surge.sh",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "__comment__predeploy": "npm run build",
     "deploy-gh": "gh-pages -d build",
     "deploy": "npm build && cd build && cp index.html 200.html && cd .. && surge -p build --domain https://raicuparta.surge.sh"
   },
