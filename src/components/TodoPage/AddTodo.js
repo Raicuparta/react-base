@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 
-import { addTodo, clearTodos } from '../actions'
+import { addTodo, clearTodos } from '../../actions'
 
 const AddTodo = ({ dispatch }) => {
   let input

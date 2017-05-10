@@ -6,15 +6,15 @@ import {
 } from 'react-router-dom'
 import { Grid } from 'react-bootstrap'
 
-import Home from './scenes/Home'
-import Topics from './scenes/Topics'
-import Users from './scenes/Users'
-import TodoPage from './scenes/TodoPage'
-import Profile from './scenes/Profile'
-import Comments from './scenes/Comments'
-import Photos from './scenes/Photos'
-import NotFound from './scenes/NotFound'
-import TopMenu from './components/TopMenu'
+import Home from '../Home'
+import Topics from '../Topics'
+import Users from '../Users'
+import TodoPage from '../TodoPage'
+import Profile from '../Profile'
+import Comments from '../Comments'
+import Photos from '../Photos'
+import NotFound from '../NotFound'
+import TopMenu from '../TopMenu'
 
 const topMenuItems = [
   {name: 'Home', path: '/', exact: true, icon: 'home'},
@@ -46,3 +46,5 @@ const App = () => (
 )
 
 export default App
+
+export { App }

@@ -2,13 +2,13 @@ import React from 'react'
 import t from 'prop-types'
 import { Navbar, Nav } from 'react-bootstrap'
 
-import MenuItem from './MenuItem'
-import TodoCounter from '../containers/TodoCounter'
+import MenuItem from '../MenuItem'
+import TodoCounter from './TodoCounter'
 
 const TopMenu = ({ items, onTopMenuClick }) => (
   <div>
     <div className="header-image" style={{
-      backgroundImage: 'url(' + require('../field.jpg') + ')'
+      backgroundImage: 'url(' + require('./field.jpg') + ')'
     }}>
       <h1>React Skeleton App</h1>
     </div>

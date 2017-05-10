@@ -5,7 +5,7 @@ import { compose, createStore } from 'redux'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import 'bootstrap/dist/css/bootstrap.css'
 
-import App from './App'
+import App from './components/App'
 import './index.css'
 import appReducers from './reducers'
 

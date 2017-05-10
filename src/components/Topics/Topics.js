@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { Row, Nav, Col, Well, Panel } from 'react-bootstrap'
 
-import Topic from '../components/Topic'
-import MenuItem from '../components/MenuItem'
+import Topic from './Topic'
+import MenuItem from '../MenuItem'
 
 export default class Topics extends Component {
   state = { activeItem: '' }

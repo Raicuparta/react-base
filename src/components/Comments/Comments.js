@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table, Navbar, FormGroup, FormControl, Button, Well } from 'react-bootstrap'
 
-import PaginatedPage from '../containers/PaginatedPage'
-import SortLink from '../components/SortLink'
+import PaginatedPage from '../PaginatedPage'
+import SortLink from './SortLink'
 
 // Ideally, you'd want to fetch these values from the server.
 // But I didn't feel like parsing the HTML headers so I'll

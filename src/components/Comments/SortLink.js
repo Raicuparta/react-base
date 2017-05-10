@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import t from 'prop-types'
 
-import { setSortOrder } from '../actions/SortActions'
+import { setSortOrder } from '../../actions/SortActions'
 
 const SortLink = ({ dispatch, name, sortBy }) => {
   return (

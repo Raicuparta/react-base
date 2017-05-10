@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-import User from '../components/User'
+import User from './User'
 
 class Users extends React.Component {
   state = {users: []}
