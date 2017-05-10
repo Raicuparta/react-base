@@ -62,7 +62,7 @@ class PaginatedPage extends React.Component {
     )
   }
 
-  componentDidMount = () => this.fetchPage(this.state.page)
+  componentDidMount = () => this.fetchPage(this.props.page)
 
   fetchPage = (page) => {
     this.setState({loading: true, page: page})
