@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "mobx": "^3.1.9",
+    "mobx-react": "^4.1.8",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
@@ -15,12 +17,14 @@
     "redux-persist": "^4.7.1"
   },
   "devDependencies": {
+    "custom-react-scripts": "^0.0.23",
     "gh-pages": "^0.12.0",
     "react-devtools": "^2.1.0",
-    "react-scripts": "0.9.5",
+    "__comment__react-scripts": "0.9.5",
     "sw-precache": "^5.1.1"
   },
   "scripts": {
+    "reacts-scripts": "custom-react-scripts",
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "build-pwa": "react-scripts build && sw-precache --config=sw-precache-config.js",
