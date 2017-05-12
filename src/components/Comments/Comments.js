@@ -1,8 +1,10 @@
 import React from 'react'
 import { Table, Navbar, FormGroup, FormControl, Button, Well } from 'react-bootstrap'
+import { observer } from 'mobx-react'
 
 import PaginatedPage from '../PaginatedPage'
 import SortLink from './SortLink'
+import PaginationStore from '../../stores/PaginationStore'
 
 // Ideally, you'd want to fetch these values from the server.
 // But I didn't feel like parsing the HTML headers so I'll
@@ -10,6 +12,7 @@ import SortLink from './SortLink'
 const TOTAL_PAGES = 50
 const MAX_ITEMS = 10
 
+@observer
 class Comments extends React.Component {
   state = {comments: [], search: ''}
 
@@ -23,7 +26,11 @@ class Comments extends React.Component {
         currentUrl={'/comments/'}
         page={Number.parseInt(this.props.match.params.page, 10) || 1}
         search={this.state.search.length > 0 ? '&id=' + this.state.search : ''}
-        key={this.state.search}>
+        
+        // React forces a remount when the key is changed
+        // so we change the key like this to force a remount when any of these values change.
+        // Right now, we need a remount because the remote content is loaded on mount
+        key={this.state.search + PaginationStore.sort + PaginationStore.order}>
 
         <Navbar>
           <form>

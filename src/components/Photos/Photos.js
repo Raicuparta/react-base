@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Row, Col, Thumbnail } from 'react-bootstrap'
+import { observer } from 'mobx-react'
 
 import PaginatedPage from '../PaginatedPage'
 
@@ -9,6 +10,7 @@ import PaginatedPage from '../PaginatedPage'
 const TOTAL_PAGES = 417
 const MAX_ITEMS = 12
 
+@observer
 class Photos extends React.Component {
   state = {photos: []}
 

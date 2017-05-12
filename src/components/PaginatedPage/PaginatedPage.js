@@ -1,9 +1,11 @@
 import React from 'react'
 import { Pagination, ProgressBar, Col, Row, Fade } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 import t from 'prop-types'
+import { observer } from 'mobx-react'
+import PaginationStore from '../../stores/PaginationStore'
 
+@observer
 class PaginatedPage extends React.Component {
   static propTypes = {
     totalPages: t.number,
@@ -70,7 +72,7 @@ class PaginatedPage extends React.Component {
 
   fetchPage = (page) => {
     this.setState({loading: true, page: page})
-    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + this.props.sort + '&_order=' + (this.props.desc ? 'DESC' : 'ASC') + this.props.search)
+    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + PaginationStore.sort + '&_order=' + PaginationStore.order + this.props.search)
       .then((response) => {
         return response.json()
       }).then((json) => {
@@ -83,12 +85,4 @@ class PaginatedPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  sort: state.sortOrder.sort,
-  desc: state.sortOrder.desc,
-  // Changing the 'key' atribute makes React remount the component.
-  // Setting it up like this makes it remount every time the sort method/order is changed.
-  key: state.sortOrder.sort + state.sortOrder.desc
-})
-
-export default connect(mapStateToProps)(PaginatedPage)
+export default PaginatedPage

@@ -3,11 +3,7 @@ import { observable, action, computed } from 'mobx'
 class TodoStore {
 
   @observable filter = 'SHOW_ALL'
-  @observable todos
-
-  constructor() {
-    this.todos = [{text: 'do it now', completed: false}]
-  }
+  @observable todos = [{text: 'do it now', completed: false}]
 
   @computed get visibleTodos() {
     if (this.filter === 'SHOW_ACTIVE')
