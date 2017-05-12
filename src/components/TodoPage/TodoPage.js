@@ -7,7 +7,7 @@ import TodoStore from '../../stores/TodoStore'
 
 const TodoPage = () => (
   <div>
-    <AddTodo />
+    <AddTodo onAdd={TodoStore.add} onClear={TodoStore.clear}/>
     <TodoList todos={TodoStore.todos} onTodoClick={TodoStore.toggle} />
     <Footer />
   </div>

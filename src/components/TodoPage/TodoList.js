@@ -9,7 +9,7 @@ let itemCount = 0
 
 @observer
 class TodoList extends React.Component {
-  propTypes = {
+  static propTypes = {
     todos: t.arrayOf(t.shape({
       completed: t.bool.isRequired,
       text: t.string.isRequired

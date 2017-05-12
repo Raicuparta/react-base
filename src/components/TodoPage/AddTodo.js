@@ -1,10 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 
-import { addTodo, clearTodos } from '../../actions'
-
-const AddTodo = ({ dispatch }) => {
+const AddTodo = ({ onAdd, onClear }) => {
   let input
 
   return (
@@ -14,7 +11,7 @@ const AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
+        onAdd(input.value)
         input.value = ''
       }}>
         <Navbar.Form>
@@ -27,11 +24,11 @@ const AddTodo = ({ dispatch }) => {
           {' '}
           <Button type="submit">Add Todo</Button>
           {' '}
-          <Button onClick={() => {dispatch(clearTodos())}}>Clear List</Button>
+          <Button onClick={onClear}>Clear List</Button>
         </Navbar.Form>
       </form>
     </Navbar>
   )
 }
 
-export default connect()(AddTodo)
+export default AddTodo

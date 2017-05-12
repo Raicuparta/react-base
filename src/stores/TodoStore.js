@@ -8,16 +8,18 @@ class TodoStore {
     this.todos = [{text: 'do it now', completed: false}]
   }
 
-  @action addTodo = (todo) => {
-    this.todos.add(todo)
+  @action add = (text) => {
+    this.todos.push({text: text, completed: false})
+  }
+
+  @action clear = () => {
+    this.todos.clear()
   }
 
   @action toggle = (text) => {
-    this.todos.map(t => {
-      if (t.text == text) t.completed = !t.completed
-    })
+    let todo = this.todos.find((e) => e.text === text)
+    todo.completed = !todo.completed
   }
-
 }
 
 const todoStore = new TodoStore()
