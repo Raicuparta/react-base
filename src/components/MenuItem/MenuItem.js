@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 const MenuItem = ({ name, path = '', exact, icon = '' }) => (
   <LinkContainer to={path} exact={exact}>
-    <NavItem><Glyphicon glyph={icon} />   {name}</NavItem>
+    <NavItem><Glyphicon glyph={icon} /> {name}</NavItem>
   </LinkContainer>
 )
 
