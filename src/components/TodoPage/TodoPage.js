@@ -2,12 +2,13 @@ import React from 'react'
 
 import AddTodo from './AddTodo'
 import Footer from './Footer'
-import VisibleTodoList from './VisibleTodoList'
+import TodoList from './TodoList'
+import TodoStore from '../../stores/TodoStore'
 
 const TodoPage = () => (
   <div>
     <AddTodo />
-    <VisibleTodoList />
+    <TodoList todos={TodoStore.todos} onTodoClick={TodoStore.toggle} />
     <Footer />
   </div>
 )
