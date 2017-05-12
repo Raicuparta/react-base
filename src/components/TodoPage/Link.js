@@ -1,27 +1,31 @@
 import React from 'react'
 import t from 'prop-types'
+import { observer } from 'mobx-react'
 
-const Link = ({ active, children, onClick }) => {
-  if (active) {
-    return <span>{children}</span>
+@observer
+class Link extends React.Component {
+  static propTypes = {
+    active: t.bool.isRequired,
+    children: t.node.isRequired,
+    onClick: t.func.isRequired
   }
 
-  return (
-    <a href="#"
-       onClick={e => {
-         e.preventDefault()
-         onClick()
-       }}
-    >
-      {children}
-    </a>
-  )
-}
+  render() {
+    const { filter, onClick, active, children } = this.props
 
-Link.propTypes = {
-  active: t.bool.isRequired,
-  children: t.node.isRequired,
-  onClick: t.func.isRequired
+    if (active) {
+      return <span>{children}</span>
+    }
+
+    return (
+      <a href="#"
+         onClick={e => {
+           e.preventDefault()
+           onClick(filter)
+         }}
+      >{children}</a>
+    )
+  }
 }
 
 export default Link
