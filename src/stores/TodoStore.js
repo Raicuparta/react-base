@@ -1,9 +1,14 @@
 import { observable, action, computed } from 'mobx'
+import { create, persist } from 'mobx-persist'
+
+class TodoItem {
+  @persist @observable text = ''
+  @persist @observable completed = false
+}
 
 class TodoStore {
-
   @observable filter = 'SHOW_ALL'
-  @observable todos = [{text: 'do it now', completed: false}]
+  @persist('list', TodoItem) @observable todos = []
 
   @computed get visibleTodos() {
     if (this.filter === 'SHOW_ACTIVE')
@@ -30,7 +35,9 @@ class TodoStore {
   @action setFilter = (filter) => this.filter = filter
 }
 
+const hydrate = create()
 const todoStore = new TodoStore()
+hydrate('todo', todoStore)
 
 export default todoStore
 export { TodoStore }
