@@ -11,7 +11,6 @@ class PaginationStore {
     else
       this.sort = sort
   }
-
 }
 
 const paginationStore = new PaginationStore()

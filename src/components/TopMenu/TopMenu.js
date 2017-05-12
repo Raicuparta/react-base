@@ -1,11 +1,13 @@
 import React from 'react'
 import t from 'prop-types'
 import { Navbar, Nav } from 'react-bootstrap'
+import { observer } from 'mobx-react'
+import TodoStore from '../../stores/TodoStore'
 
 import MenuItem from '../MenuItem'
 import TodoCounter from './TodoCounter'
 
-const TopMenu = ({ items, onTopMenuClick }) => (
+const TopMenu = observer(({ items, onTopMenuClick }) => (
   <div>
     <div className="header-image" style={{
       backgroundImage: 'url(' + require('./field.jpg') + ')'
@@ -27,12 +29,12 @@ const TopMenu = ({ items, onTopMenuClick }) => (
             icon={item.icon}
           />
         )}
-        <TodoCounter/>
+        <TodoCounter label={TodoStore.todos.length}/>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   </div>
-)
+))
 
 TopMenu.propTypes = {
   items: t.arrayOf(t.shape({

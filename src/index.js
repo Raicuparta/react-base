@@ -1,32 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { compose, createStore } from 'redux'
-import {persistStore, autoRehydrate} from 'redux-persist'
+
 import 'bootstrap/dist/css/bootstrap.css'
 
 import App from './components/App'
 import './index.css'
-import appReducers from './reducers'
 
-const initialState = {
-  sortOrder: {}
-}
-
-const store = createStore(
-  appReducers,
-  initialState,
-  compose(
-    autoRehydrate(),
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-)
-
-persistStore(store)
-
-ReactDOM.render(
-  <Provider store={store}>
-  	<App />
-  </Provider>,
-  document.getElementById('root')
-)
+ReactDOM.render(<App /> , document.getElementById('root'))
