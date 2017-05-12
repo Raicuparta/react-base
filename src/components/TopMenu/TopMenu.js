@@ -4,6 +4,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 import { observer } from 'mobx-react'
 import TodoStore from '../../stores/TodoStore'
 import { withRouter } from 'react-router-dom'
+import './index.css'
 
 import MenuItem from '../MenuItem'
 import TodoCounter from './TodoCounter'

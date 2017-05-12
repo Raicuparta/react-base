@@ -3,6 +3,9 @@ import { Pagination, ProgressBar, Col, Row, Fade } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import t from 'prop-types'
 import { observer } from 'mobx-react'
+
+import './index.css'
+
 import PaginationStore from '../../stores/PaginationStore'
 
 @observer

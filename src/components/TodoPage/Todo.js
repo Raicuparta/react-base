@@ -2,12 +2,12 @@ import React from 'react'
 import t from 'prop-types'
 import { ListGroupItem } from 'react-bootstrap'
 
+import './index.css'
+
 const Todo = ({ onClick, completed, text }) => (
   <ListGroupItem
     onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
+    bsStyle={completed ? 'warning' : 'default'}
   >
     {text}
   </ListGroupItem>
