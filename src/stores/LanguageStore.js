@@ -8,8 +8,9 @@ class LanguageStore {
 
   @action setLang = (lang) => this.lang = lang
 
-  // Pass the list hierarchy items for the text you want,
-  // and this gives you that text in the current language
+  // Pass the list of hierarchy items for the text you want, and
+  // this gives you that text in the current language.
+  // text('home', 'title') is the same as i18n[this.lang].home.title.
   text(...keys) {
     let text = i18n[this.lang]
     //debugger
