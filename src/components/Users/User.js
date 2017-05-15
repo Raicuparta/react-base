@@ -14,12 +14,12 @@ const User = ({ info }) => (
 )
 
 User.propTypes = {
-  users: t.arrayOf(t.shape({  
+  info: t.shape({  
     id: t.number.isRequired,
     name: t.string.isRequired,
     username: t.string.isRequired,
     website: t.string
-  }))
+  })
 }
 
 export default User

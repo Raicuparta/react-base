@@ -48,7 +48,8 @@ TopMenu.propTypes = {
   items: t.arrayOf(t.shape({
     name: t.string,
     path: t.string,
-    exact: t.bool
+    exact: t.bool,
+    icon: t.string
   })),
   onTopMenuClick: t.func
 }

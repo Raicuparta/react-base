@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 import { observer } from 'mobx-react'
+import t from 'prop-types'
 
 import TodoFilter from './TodoFilter'
 import lang from '../../stores/LanguageStore'
@@ -36,5 +37,12 @@ const TodoMenu = observer(({ onAdd, onClear, onFilter, filter }) => {
     </Navbar>
   )
 })
+
+TodoMenu.propTypes = {
+  onAdd: t.func.isRequired,
+  onClear: t.func.isRequired,
+  onFilter: t.func.isRequired,
+  filter: t.string.isRequired
+}
 
 export default TodoMenu
