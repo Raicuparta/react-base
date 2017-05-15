@@ -19,16 +19,20 @@ class LanguageStore {
     if (!text) text = this.textFromLang(this.DEFAULT_LANG, ...keys)
     // If we still don't find it, we print the requested text key and log a warning
     if (!text) {
-      text = '' + keys
-      console.warn('Text for "' + keys + '" not found in current or default languages.')
+      text = ('' + keys).replace(',', '.')
+      console.warn('Text for "' + text + '" not found in current or default languages.')
     }
     return text
   }
 
   textFromLang = (lang, ...keys) => {
-    let text = i18n[lang]
-    keys.map((key) => text = text[key])
-    return text
+    let text
+    try {
+      text = i18n[lang]
+      keys.map((key) => text = text[key])
+    } finally {
+      return text
+    }
   }
 
   language(code) {

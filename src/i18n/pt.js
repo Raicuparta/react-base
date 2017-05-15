@@ -43,5 +43,10 @@ export default {
       completed: 'Mostrar completas'
     }
   },
+  notFound: {
+    title: 'Página não encontrada',
+    messageBeforePath: 'Lamento, mas o endereço ',
+    messageAfterPath: " não devolveu uma página válida."
+  },
   loading: 'A carregar...'
 }

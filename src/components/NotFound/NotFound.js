@@ -1,11 +1,14 @@
 import React from 'react'
 import { Jumbotron, Glyphicon } from 'react-bootstrap'
+import { observer } from 'mobx-react'
 
-const NotFound = () => (
+import lang from '../../stores/LanguageStore.js'
+
+const NotFound = observer(() => (
   <Jumbotron>
-    <h1><Glyphicon glyph='fire' />  404 - Not Found</h1>
-    <p>I'm terribly sorry, but the path <code>{location.pathname}</code> is a myth.</p>
+    <h1><Glyphicon glyph='fire' />  404 - {lang.text('notFound', 'title')}</h1>
+    <p>{lang.text('notFound', 'messageBeforePath')} <code>{location.pathname}</code>{lang.text('notFound', 'messageAfterPath')}</p>
   </Jumbotron>
-)
+))
 
 export default NotFound

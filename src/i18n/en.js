@@ -43,5 +43,10 @@ export default {
       completed: 'Show completed'
     }
   },
+  notFound: {
+    title: 'Page not found',
+    messageBeforePath: 'Sorry, but the path ',
+    messageAfterPath: " didn't lead to a valid page."
+  },
   loading: 'Loading...'
 }
