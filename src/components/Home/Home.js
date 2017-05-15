@@ -1,12 +1,15 @@
 import React from 'react'
 import { Jumbotron, Button } from 'react-bootstrap'
+import { observer } from 'mobx-react'
 
-const Home = () => (
+import lang from '../../stores/LanguageStore'
+
+const Home = observer(() => (
   <Jumbotron>
-    <h1>Hello, world!</h1>
-    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <p><Button bsStyle="primary">This button doesn't do anything so don't click it</Button></p>
+    <h1>{lang.text('home', 'title')}</h1>
+    <p>{lang.text('home', 'description')}</p>
+    <p><Button bsStyle="primary">{lang.text('home', 'button')}</Button></p>
   </Jumbotron>
-)
+))
 
 export default Home

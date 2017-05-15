@@ -7,11 +7,22 @@ export default {
     photos: 'Photos',
     todos: 'To-Dos'
   },
+  home: {
+    title: 'Hello, world!',
+    description: 'This is an app with a bunch of random stuff that I created to help me learn React.',
+    button: "This button doesn't do anything so don't click it"
+  },
   users: {
     id: 'ID',
     name: 'Name',
     username: 'Username',
     website: 'Website'
+  },
+  topics: {
+    rendering: 'Rendering',
+    components: 'Components',
+    propsVsState: 'Props vs State',
+    pleaseSelect: 'Please select a topic'
   },
   comments: {
     id: 'ID',
