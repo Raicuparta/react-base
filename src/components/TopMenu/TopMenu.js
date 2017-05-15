@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import './index.css'
 
 import TodoStore from '../../stores/TodoStore'
-import GlobalStore from '../../stores/GlobalStore'
+import lang from '../../stores/LanguageStore'
 import TopMenuItem from '../TopMenuItem'
 import TodoCounter from './TodoCounter'
 
@@ -28,15 +28,15 @@ const TopMenu = observer(({ items, onTopMenuClick }) => (
           <TopMenuItem
             path={item.path}
             key={item.path}
-            name={GlobalStore.text('topMenu', item.name)}
+            name={lang.text('topMenu', item.name)}
             exact={item.exact}
             icon={item.icon}
           />
         )}
         <TodoCounter label={TodoStore.todos.length}/>
-        <NavDropdown title={GlobalStore.lang} id='select-language-dropdown' onSelect={GlobalStore.setLang}>
-          <MenuItem eventKey={'en'}>English</MenuItem>
-          <MenuItem eventKey={'pt'}>Português</MenuItem>
+        <NavDropdown title={lang.language()} id='select-language-dropdown' onSelect={lang.setLang}>
+          <MenuItem eventKey={'en'}>{lang.language('en')}</MenuItem>
+          <MenuItem eventKey={'pt'}>{lang.language('pt')}</MenuItem>
         </NavDropdown>
         </Nav>
       </Navbar.Collapse>

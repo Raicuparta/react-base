@@ -3,7 +3,7 @@ import { create, persist } from 'mobx-persist'
 
 import i18n from '../i18n'
 
-class GlobalStore {
+class LanguageStore {
   @persist @observable lang = 'en'
 
   @action setLang = (lang) => this.lang = lang
@@ -16,11 +16,20 @@ class GlobalStore {
     keys.map((key) => text = text[key])
     return text
   }
+
+  language(code) {
+    let lang = code || this.lang
+    switch (lang) {
+      case 'en': return 'English'
+      case 'pt': return 'Português'
+      default: return 'Unsupported language'
+    }
+  }
 }
 
 const hydrate = create()
-const globalStore = new GlobalStore()
-hydrate('global', globalStore)
+const languageStore = new LanguageStore()
+hydrate('global', languageStore)
 
-export default globalStore
-export { GlobalStore }
+export default languageStore
+export { LanguageStore }
