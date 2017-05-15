@@ -1,9 +1,11 @@
 import React from 'react'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
+import { observer } from 'mobx-react'
 
 import TodoFilter from './TodoFilter'
+import lang from '../../stores/LanguageStore'
 
-const TodoMenu = ({ onAdd, onClear, onFilter, filter }) => {
+const TodoMenu = observer(({ onAdd, onClear, onFilter, filter }) => {
   let input
 
   return (
@@ -18,21 +20,21 @@ const TodoMenu = ({ onAdd, onClear, onFilter, filter }) => {
       }}>
         <Navbar.Form>
           <FormGroup>
-            <FormControl type="text" placeholder="Enter text"
+            <FormControl type="text" placeholder={lang.text('todos', 'enter_text')}
               inputRef={node => {
                 input = node
               }}/>
           </FormGroup>
           {' '}
-          <Button type="submit">Add Todo</Button>
+          <Button type="submit">{lang.text('todos', 'add')}</Button>
           {' '}
-          <Button onClick={onClear}>Clear List</Button>
+          <Button onClick={onClear}>{lang.text('todos', 'clear')}</Button>
           {' '}
           <TodoFilter onClick={onFilter} filter={filter}/>
         </Navbar.Form>
       </form>
     </Navbar>
   )
-}
+})
 
 export default TodoMenu

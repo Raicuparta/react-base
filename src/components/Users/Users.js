@@ -1,8 +1,11 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
+import { observer } from 'mobx-react'
 
 import User from './User'
+import lang from '../../stores/LanguageStore'
 
+@observer
 class Users extends React.Component {
   state = {users: []}
 
@@ -16,10 +19,10 @@ class Users extends React.Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Website</th>
+              <th>{lang.text('users', 'id')}</th>
+              <th>{lang.text('users', 'name')}</th>
+              <th>{lang.text('users', 'username')}</th>
+              <th>{lang.text('users', 'website')}</th>
             </tr>
           </thead>
           <tbody>

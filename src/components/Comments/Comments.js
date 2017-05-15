@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import PaginatedPage from '../PaginatedPage'
 import SortLink from './SortLink'
 import PaginationStore from '../../stores/PaginationStore'
+import lang from '../../stores/LanguageStore'
 
 // Ideally, you'd want to fetch these values from the server.
 // But I didn't feel like parsing the HTML headers so I'll
@@ -39,12 +40,12 @@ class Comments extends React.Component {
                 <FormControl
                   type='text'
                   defaultValue={this.state.search}
-                  placeholder='Comment ID'
+                  placeholder={lang.text('comments', 'search', 'comment_id')}
                   inputRef={this.searchRef}
                 />
               </FormGroup>
               {' '}
-              <Button onClick={this.clearSearch}>Clear</Button>
+              <Button onClick={this.clearSearch}>{lang.text('comments', 'search', 'clear')}</Button>
             </Navbar.Form>
           </form>
         </Navbar>
@@ -81,9 +82,9 @@ class Comments extends React.Component {
     <Table striped hover>
       <thead>
         <tr>
-          <SortLink name='ID' sortBy='id' />
-          <SortLink name='Name' sortBy='name' />
-          <SortLink name='Comment' sortBy='body' />
+          <SortLink name={lang.text('comments', 'id')} sortBy='id' />
+          <SortLink name={lang.text('comments', 'title')} sortBy='name' />
+          <SortLink name={lang.text('comments', 'comment')} sortBy='body' />
         </tr>
       </thead>
       <tbody>

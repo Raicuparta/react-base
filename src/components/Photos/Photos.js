@@ -3,6 +3,7 @@ import { Grid, Row, Col, Thumbnail } from 'react-bootstrap'
 import { observer } from 'mobx-react'
 
 import PaginatedPage from '../PaginatedPage'
+import lang from '../../stores/LanguageStore'
 
 // Ideally, you'd want to fetch these values from the server.
 // But I didn't feel like parsing the HTML headers so I'll
@@ -30,7 +31,7 @@ class Photos extends React.Component {
         maxItems={MAX_ITEMS}
         currentUrl={'/photos/'}
         page={Number.parseInt(this.props.match.params.page, 10) || 1}>
-        <h2>Photos</h2>
+        <h2>{lang.text('topMenu', 'photos')}</h2>
         <Grid>
           <Row>
             {photos}

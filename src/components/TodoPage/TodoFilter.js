@@ -2,6 +2,8 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
 
+import lang from '../../stores/LanguageStore'
+
 @observer
 class TodoFilter extends React.Component {
 
@@ -20,11 +22,11 @@ class TodoFilter extends React.Component {
   filterName(filter) {
     switch (filter) {
       case 'SHOW_ALL':
-        return 'Show all'
+        return lang.text('todos', 'filters', 'all')
       case 'SHOW_ACTIVE':
-        return 'Show active'
+        return lang.text('todos', 'filters', 'active')
       case 'SHOW_COMPLETED':
-        return 'Show completed'
+        return lang.text('todos', 'filters', 'completed')
       default:
         return ''
     } 
