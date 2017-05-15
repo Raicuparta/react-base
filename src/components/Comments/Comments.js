@@ -7,25 +7,24 @@ import SortLink from './SortLink'
 import PaginationStore from '../../stores/PaginationStore'
 import lang from '../../stores/LanguageStore'
 
-// Ideally, you'd want to fetch these values from the server.
-// But I didn't feel like parsing the HTML headers so I'll
-// just hardcode them for now.
-const TOTAL_PAGES = 50
 const MAX_ITEMS = 10
 
 @observer
 class Comments extends React.Component {
-  state = {comments: [], search: ''}
+  state = {
+    comments: [],
+    search: '',
+    page: this.pageFromUrl
+  }
 
   render () {
     return (
       <PaginatedPage
         fetchUrl='https://jsonplaceholder.typicode.com/comments'
         fetchCallback={this.fetchCallback}
-        totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/comments/'}
-        page={Number.parseInt(this.props.match.params.page, 10) || 1}
+        page={this.state.page}
         search={this.state.search.length > 0 ? '&id=' + this.state.search : ''}
         
         // React forces a remount when the key is changed
@@ -53,7 +52,12 @@ class Comments extends React.Component {
         <h2>Comments</h2>
         <this.Comments />
       </PaginatedPage>
-    )}
+    )
+  }
+
+  get pageFromUrl() {
+    return Number.parseInt(this.props.match.params.page, 10) || 1
+  }
 
   fetchCallback = (json, page) => {
     this.setState({comments: json, page: page})
@@ -62,13 +66,13 @@ class Comments extends React.Component {
   searchRef = (ref) => {
     if (!ref) return
     ref.oninput = () => {
-      this.setState({search: ref.value})
+      this.setState({search: ref.value, page: 1})
     }
     ref.focus()
   }
 
   clearSearch = () => {
-    this.setState({search: ''})
+    this.setState({search: '', page: this.pageFromUrl})
   }
 
   Comments = () => {

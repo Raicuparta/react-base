@@ -5,10 +5,6 @@ import { observer } from 'mobx-react'
 import PaginatedPage from '../PaginatedPage'
 import lang from '../../stores/LanguageStore'
 
-// Ideally, you'd want to fetch these values from the server.
-// But I didn't feel like parsing the HTML headers so I'll
-// just hardcode them for now.
-const TOTAL_PAGES = 417
 const MAX_ITEMS = 12
 
 @observer
@@ -27,7 +23,6 @@ class Photos extends React.Component {
       <PaginatedPage
         fetchUrl='https://jsonplaceholder.typicode.com/photos'
         fetchCallback={this.fetchCallback}
-        totalPages={TOTAL_PAGES}
         maxItems={MAX_ITEMS}
         currentUrl={'/photos/'}
         page={Number.parseInt(this.props.match.params.page, 10) || 1}>

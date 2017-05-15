@@ -13,7 +13,6 @@ class LanguageStore {
   // text('home', 'title') is the same as i18n[this.lang].home.title.
   text(...keys) {
     let text = i18n[this.lang]
-    //debugger
     keys.map((key) => text = text[key])
     return text
   }

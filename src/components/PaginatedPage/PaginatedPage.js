@@ -11,7 +11,6 @@ import PaginationStore from '../../stores/PaginationStore'
 @observer
 class PaginatedPage extends React.Component {
   static propTypes = {
-    totalPages: t.number,
     page: t.number,
     maxItems: t.number,
     currentUrl: t.string.isRequired,
@@ -23,7 +22,6 @@ class PaginatedPage extends React.Component {
   }
 
   static defaultProps = {
-    totalPages: 1,
     page: 1,
     maxItems: 10,
     sort: '',
@@ -33,13 +31,14 @@ class PaginatedPage extends React.Component {
 
   state = {
     page: this.props.page,
-    loading: false
+    loading: false,
+    totalCount: 0
   }
 
   PaginationContainer = withRouter(({ history }) => (
     <Pagination first last next prev
       bsSize='small'
-      items={this.props.totalPages}
+      items={Math.ceil(this.state.totalCount / this.props.maxItems)}
       activePage={this.state.page}
       maxButtons={10}
       bsClass='pagination'
@@ -77,6 +76,7 @@ class PaginatedPage extends React.Component {
     this.setState({loading: true, page: page})
     fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + PaginationStore.sort + '&_order=' + PaginationStore.order + this.props.search)
       .then((response) => {
+        this.setState({totalCount: parseInt(response.headers.get('x-total-count'), 10)})
         return response.json()
       }).then((json) => {
         if (this.cancelFetch) return
