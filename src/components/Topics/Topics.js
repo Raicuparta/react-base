@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import { Row, Nav, Col, Well, Panel } from 'react-bootstrap'
 
 import Topic from './Topic'
-import MenuItem from '../MenuItem'
+import TopMenuItem from '../TopMenuItem'
 
 export default class Topics extends Component {
   state = { activeItem: '' }
@@ -16,9 +16,9 @@ export default class Topics extends Component {
         <Col sm={4}>
           <Panel>
             <Nav bsStyle="pills" stacked>
-              <MenuItem path={'/topics/rendering'} name='rendering'/>
-              <MenuItem path={'/topics/components'} name='components'/>
-              <MenuItem path={'/topics/props-v-state'} name='props-v-state'/>
+              <TopMenuItem path={'/topics/rendering'} name='rendering'/>
+              <TopMenuItem path={'/topics/components'} name='components'/>
+              <TopMenuItem path={'/topics/props-v-state'} name='props-v-state'/>
             </Nav>
           </Panel>
         </Col>

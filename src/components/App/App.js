@@ -17,12 +17,12 @@ import NotFound from '../NotFound'
 import TopMenu from '../TopMenu'
 
 const topMenuItems = [
-  {name: 'Home', path: '/', exact: true, icon: 'home'},
-  {name: 'Users', path: '/users', icon: 'user'},
-  {name: 'Topics', path: '/topics', icon: 'list'},
-  {name: 'Comments', path: '/comments', icon: 'comment'},
-  {name: 'Photos', path: '/photos', icon: 'camera'},
-  {name: 'To-Dos', path: '/todos', icon: 'list-alt'},
+  {name: 'home', path: '/', exact: true, icon: 'home'},
+  {name: 'users', path: '/users', icon: 'user'},
+  {name: 'topics', path: '/topics', icon: 'list'},
+  {name: 'comments', path: '/comments', icon: 'comment'},
+  {name: 'photos', path: '/photos', icon: 'camera'},
+  {name: 'todos', path: '/todos', icon: 'list-alt'},
 ]
 
 const App = () => (

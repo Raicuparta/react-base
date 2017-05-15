@@ -1,12 +1,14 @@
 import React from 'react'
 import t from 'prop-types'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap'
 import { observer } from 'mobx-react'
-import TodoStore from '../../stores/TodoStore'
 import { withRouter } from 'react-router-dom'
+
 import './index.css'
 
-import MenuItem from '../MenuItem'
+import TodoStore from '../../stores/TodoStore'
+import GlobalStore from '../../stores/GlobalStore'
+import TopMenuItem from '../TopMenuItem'
 import TodoCounter from './TodoCounter'
 
 const TopMenu = observer(({ items, onTopMenuClick }) => (
@@ -23,15 +25,19 @@ const TopMenu = observer(({ items, onTopMenuClick }) => (
       <Navbar.Collapse>
         <Nav>
         {items.map(item =>
-          <MenuItem
+          <TopMenuItem
             path={item.path}
             key={item.path}
-            name={item.name}
+            name={GlobalStore.text('topMenu', item.name)}
             exact={item.exact}
             icon={item.icon}
           />
         )}
         <TodoCounter label={TodoStore.todos.length}/>
+        <NavDropdown title={GlobalStore.lang} id='select-language-dropdown' onSelect={GlobalStore.setLang}>
+          <MenuItem eventKey={'en'}>English</MenuItem>
+          <MenuItem eventKey={'pt'}>Português</MenuItem>
+        </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
