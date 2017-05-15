@@ -12,7 +12,7 @@ class TodoPage extends React.Component {
     return (
       <div>
         <AddTodo onAdd={TodoStore.add} onClear={TodoStore.clear}/>
-        <TodoList todos={TodoStore.visibleTodos} onTodoClick={TodoStore.toggle} />
+        <TodoList todos={TodoStore.visibleTodos} />
         <Footer onClick={TodoStore.setFilter} filter={TodoStore.filter}/>
       </div>
     )

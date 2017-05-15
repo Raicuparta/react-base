@@ -27,9 +27,8 @@ class TodoStore {
     this.todos.clear()
   }
 
-  @action toggle = (text) => {
-    let todo = this.todos.find((e) => e.text === text)
-    todo.completed = !todo.completed
+  @action toggle = (index) => {
+    this.todos[index].completed = !this.todos[index].completed
   }
 
   @action setFilter = (filter) => this.filter = filter

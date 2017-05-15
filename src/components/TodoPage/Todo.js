@@ -1,21 +1,20 @@
 import React from 'react'
 import t from 'prop-types'
 import { ListGroupItem } from 'react-bootstrap'
+import { observer } from 'mobx-react'
+import TodoStore from '../../stores/TodoStore'
 
-import './index.css'
-
-const Todo = ({ onClick, completed, text }) => (
+const Todo = observer(({ index, text }) => (
   <ListGroupItem
-    onClick={onClick}
-    bsStyle={completed ? 'warning' : 'default'}
+    onClick={() => TodoStore.toggle(index)}
+    bsStyle={TodoStore.todos[index].completed ? 'warning' : null}
   >
     {text}
   </ListGroupItem>
-)
+))
 
 Todo.propTypes = {
-  onClick: t.func.isRequired,
-  completed: t.bool.isRequired,
+  index: t.number.isRequired,
   text: t.string.isRequired
 }
 
