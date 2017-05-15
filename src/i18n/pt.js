@@ -30,7 +30,7 @@ export default {
     comment: 'Comentário',
     search: {
       clear: 'Limpar',
-      commend_id: 'ID de Comentário'
+      comment_id: 'ID de Comentário'
     }
   },
   todos: {
@@ -42,5 +42,6 @@ export default {
       active: 'Mostrar activas',
       completed: 'Mostrar completas'
     }
-  }
+  },
+  loading: 'A carregar...'
 }
