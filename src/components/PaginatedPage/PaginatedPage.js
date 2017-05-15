@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 import './index.css'
 
 import PaginationStore from '../../stores/PaginationStore'
+import lang from '../../stores/LanguageStore'
 
 @observer
 class PaginatedPage extends React.Component {
@@ -57,7 +58,7 @@ class PaginatedPage extends React.Component {
           </Col>
           <Col md={5}>
             <Fade in={this.state.loading}>
-              <ProgressBar active now={100} label="Loading..."/>
+              <ProgressBar active now={100} label={lang.text('loading')}/>
             </Fade>
           </Col>
         </Row>

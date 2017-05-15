@@ -30,7 +30,7 @@ export default {
     comment: 'Comment',
     search: {
       clear: 'Clear',
-      commend_id: 'Comment ID'
+      comment_id: 'Comment ID'
     }
   },
   todos: {
@@ -42,5 +42,6 @@ export default {
       active: 'Show active',
       completed: 'Show completed'
     }
-  }
+  },
+  loading: 'Loading...'
 }

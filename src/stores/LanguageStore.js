@@ -4,15 +4,29 @@ import { create, persist } from 'mobx-persist'
 import i18n from '../i18n'
 
 class LanguageStore {
-  @persist @observable lang = 'en'
+  DEFAULT_LANG = 'en'
+  @persist @observable lang = this.DEFAULT_LANG
 
   @action setLang = (lang) => this.lang = lang
 
   // Pass the list of hierarchy items for the text you want, and
   // this gives you that text in the current language.
   // text('home', 'title') is the same as i18n[this.lang].home.title.
-  text(...keys) {
-    let text = i18n[this.lang]
+  text = (...keys) => {
+    let text = this.textFromLang(this.lang, ...keys)
+    // If the text we're looking for isn't in the currently selected language,
+    // we fallback to the default language.
+    if (!text) text = this.textFromLang(this.DEFAULT_LANG, ...keys)
+    // If we still don't find it, we print the requested text key and log a warning
+    if (!text) {
+      text = '' + keys
+      console.warn('Text for "' + keys + '" not found in current or default languages.')
+    }
+    return text
+  }
+
+  textFromLang = (lang, ...keys) => {
+    let text = i18n[lang]
     keys.map((key) => text = text[key])
     return text
   }
