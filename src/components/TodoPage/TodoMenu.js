@@ -1,7 +1,9 @@
 import React from 'react'
 import { FormGroup, FormControl, Button, Navbar } from 'react-bootstrap'
 
-const AddTodo = ({ onAdd, onClear }) => {
+import TodoFilter from './TodoFilter'
+
+const TodoMenu = ({ onAdd, onClear, onFilter, filter }) => {
   let input
 
   return (
@@ -25,10 +27,12 @@ const AddTodo = ({ onAdd, onClear }) => {
           <Button type="submit">Add Todo</Button>
           {' '}
           <Button onClick={onClear}>Clear List</Button>
+          {' '}
+          <TodoFilter onClick={onFilter} filter={filter}/>
         </Navbar.Form>
       </form>
     </Navbar>
   )
 }
 
-export default AddTodo
+export default TodoMenu

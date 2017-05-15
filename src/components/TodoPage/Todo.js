@@ -7,7 +7,7 @@ import TodoStore from '../../stores/TodoStore'
 const Todo = observer(({ index, text }) => (
   <ListGroupItem
     onClick={() => TodoStore.toggle(index)}
-    bsStyle={TodoStore.todos[index].completed ? 'warning' : null}
+    bsStyle={TodoStore.visibleTodos[index].completed ? 'warning' : null}
   >
     {text}
   </ListGroupItem>
