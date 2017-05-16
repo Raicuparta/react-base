@@ -9,45 +9,26 @@ import './index.css'
 import PaginationStore from '../../stores/PaginationStore'
 import lang from '../../stores/LanguageStore'
 
+@withRouter
 @observer
 class PaginatedPage extends React.Component {
   static propTypes = {
-    page: t.number,
-    maxItems: t.number,
-    currentUrl: t.string.isRequired,
-    fetchUrl: t.string.isRequired,
-    sort: t.string,
-    desc: t.bool,
-    fetchCallback: t.func.isRequired,
-    search: t.string
+    currentUrl: t.string.isRequired
   }
 
-  static defaultProps = {
-    page: 1,
-    maxItems: 10,
-    sort: '',
-    desc: false,
-    search: ''
-  }
-
-  state = {
-    page: this.props.page,
-    loading: false,
-    totalCount: 0
-  }
-
-  PaginationContainer = withRouter(({ history }) => (
+  PaginationContainer = () => (
     <Pagination first last next prev
       bsSize='small'
-      items={Math.ceil(this.state.totalCount / this.props.maxItems)}
-      activePage={this.state.page}
+      items={Math.ceil(PaginationStore.totalCount / PaginationStore.maxItems)}
+      activePage={PaginationStore.page}
       maxButtons={10}
       bsClass='pagination'
       onSelect={(e) => {
-        history.push(this.props.currentUrl + e)
-        this.fetchPage(e)
+        this.props.history.push(this.props.currentUrl + e)
+        PaginationStore.page = e
+        //this.fetchPage(e)
       }}/>
-  ))
+  )
 
   render () {
     return (
@@ -57,7 +38,7 @@ class PaginatedPage extends React.Component {
             <this.PaginationContainer />
           </Col>
           <Col md={5}>
-            <Fade in={this.state.loading}>
+            <Fade in={PaginationStore.loading}>
               <ProgressBar active now={100} label={lang.text('loading')}/>
             </Fade>
           </Col>
@@ -68,25 +49,20 @@ class PaginatedPage extends React.Component {
     )
   }
 
-  componentDidMount() {this.fetchPage(this.props.page)}
 
-  cancelFetch = false
-  componentWillUnmount() {this.cancelFetch = true}
-
-  fetchPage = (page) => {
-    this.setState({loading: true, page: page})
-    fetch(this.props.fetchUrl + '?_page=' + page + '&_limit=' + this.props.maxItems + '&_sort=' + PaginationStore.sort + '&_order=' + PaginationStore.order + this.props.search)
-      .then((response) => {
-        this.setState({totalCount: parseInt(response.headers.get('x-total-count'), 10)})
-        return response.json()
-      }).then((json) => {
-        if (this.cancelFetch) return
-        this.setState({loading: false})
-        this.props.fetchCallback(json, page)
-      }).catch(function(ex) {
-        console.log('parsing failed', ex)
-      })
+  componentWillMount() {
+    let p = PaginationStore
+    p.page = this.pageFromUrl
   }
+
+  componentWillUnmount() {
+    PaginationStore.cancelFetch = true
+  }
+
+  get pageFromUrl() {
+    return Number.parseInt(this.props.match.params.page, 10) || 1
+  }
+
 }
 
 export default PaginatedPage

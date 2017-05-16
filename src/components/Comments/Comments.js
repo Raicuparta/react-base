@@ -11,34 +11,15 @@ const MAX_ITEMS = 10
 
 @observer
 class Comments extends React.Component {
-  state = {
-    comments: [],
-    search: '',
-    page: this.pageFromUrl
-  }
-
   render () {
     return (
-      <PaginatedPage
-        fetchUrl='https://jsonplaceholder.typicode.com/comments'
-        fetchCallback={this.fetchCallback}
-        maxItems={MAX_ITEMS}
-        currentUrl={'/comments/'}
-        page={this.state.page}
-        search={this.state.search.length > 0 ? '&id=' + this.state.search : ''}
-        
-        // React forces a remount when the key is changed
-        // so we change the key like this to force a remount when any of these values change.
-        // Right now, we need a remount because the remote content is loaded on mount
-        key={this.state.search + PaginationStore.sort + PaginationStore.order}>
-
+      <PaginatedPage currentUrl={'/comments/'}>
         <Navbar>
           <form>
             <Navbar.Form>
               <FormGroup>
                 <FormControl
                   type='text'
-                  defaultValue={this.state.search}
                   placeholder={lang.text('comments', 'search', 'comment_id')}
                   inputRef={this.searchRef}
                 />
@@ -55,34 +36,32 @@ class Comments extends React.Component {
     )
   }
 
-  get pageFromUrl() {
-    return Number.parseInt(this.props.match.params.page, 10) || 1
-  }
-
-  fetchCallback = (json, page) => {
-    this.setState({comments: json, page: page})
+  componentWillMount() {
+    PaginationStore.maxItems = MAX_ITEMS
+    PaginationStore.url = 'https://jsonplaceholder.typicode.com/comments'
   }
 
   searchRef = (ref) => {
     if (!ref) return
     ref.oninput = () => {
-      this.setState({search: ref.value, page: 1})
+      PaginationStore.search = ref.value
+      PaginationStore.page = 1
     }
     ref.focus()
   }
 
   clearSearch = () => {
-    this.setState({search: '', page: this.pageFromUrl})
+    PaginationStore.search = ''
   }
 
-  Comments = () => {
-    if (this.state.comments.length > 0)
+  Comments = observer(() => {
+    if (PaginationStore.content.length > 0)
       return <this.CommentList />
     else
       return <Well>No comments found</Well>
-  }
+  })
 
-  CommentList = () => (
+  CommentList = observer(() => (
     <Table striped hover>
       <thead>
         <tr>
@@ -92,7 +71,7 @@ class Comments extends React.Component {
         </tr>
       </thead>
       <tbody>
-        {this.state.comments.map((comment) => (
+        {PaginationStore.content.map((comment) => (
         <tr key={comment.id}>
           <td>{comment.id}</td>
           <td>{comment.name}</td>
@@ -100,8 +79,7 @@ class Comments extends React.Component {
         </tr>))}
       </tbody>
     </Table>
-  )
-
+  ))
 }
 
 export default Comments
