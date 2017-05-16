@@ -4,7 +4,6 @@ import { observer } from 'mobx-react'
 
 import PaginatedPage from '../PaginatedPage'
 import PaginationStore from '../../stores/PaginationStore'
-import lang from '../../stores/LanguageStore'
 
 const MAX_ITEMS = 12
 

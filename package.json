@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "__comment__predeploy": "npm run build",
     "deploy-gh": "gh-pages -d build",
-    "deploy": "npm build && cd build && cp index.html 200.html && cd .. && surge -p build --domain https://raicuparta.surge.sh"
+    "deploy": "npm run build && cd build && cp index.html 200.html && cd .. && surge -p build --domain https://raicuparta.surge.sh"
   },
   "_comment_homepage": "https://raicuparta.github.io/react-base/"
 }
