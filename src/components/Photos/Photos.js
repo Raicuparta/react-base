@@ -33,7 +33,6 @@ class Photos extends React.Component {
     PaginationStore.maxItems = MAX_ITEMS
     PaginationStore.url = 'https://jsonplaceholder.typicode.com/photos'
   }
-
 }
 
 export default Photos

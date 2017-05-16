@@ -26,7 +26,6 @@ class PaginatedPage extends React.Component {
       onSelect={(e) => {
         this.props.history.push(this.props.currentUrl + e)
         PaginationStore.page = e
-        //this.fetchPage(e)
       }}/>
   )
 
@@ -51,12 +50,12 @@ class PaginatedPage extends React.Component {
 
 
   componentWillMount() {
-    let p = PaginationStore
-    p.page = this.pageFromUrl
+    PaginationStore.page = this.pageFromUrl
   }
 
   componentWillUnmount() {
     PaginationStore.cancelFetch = true
+    PaginationStore.reset()
   }
 
   get pageFromUrl() {

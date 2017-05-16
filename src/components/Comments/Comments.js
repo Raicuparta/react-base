@@ -40,7 +40,7 @@ class Comments extends React.Component {
     PaginationStore.maxItems = MAX_ITEMS
     PaginationStore.url = 'https://jsonplaceholder.typicode.com/comments'
   }
-
+  
   searchRef = (ref) => {
     if (!ref) return
     ref.oninput = () => {
