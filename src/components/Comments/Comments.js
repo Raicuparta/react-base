@@ -29,8 +29,6 @@ class Comments extends React.Component {
             </Navbar.Form>
           </form>
         </Navbar>
-
-        <h2>Comments</h2>
         <this.Comments />
       </PaginatedPage>
     )
@@ -40,7 +38,7 @@ class Comments extends React.Component {
     PaginationStore.maxItems = MAX_ITEMS
     PaginationStore.url = 'https://jsonplaceholder.typicode.com/comments'
   }
-  
+
   searchRef = (ref) => {
     if (!ref) return
     ref.oninput = () => {

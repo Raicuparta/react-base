@@ -15,7 +15,6 @@ class Users extends React.Component {
     ))
     return (
       <div>
-        <h2>Users</h2>
         <Table striped bordered hover>
           <thead>
             <tr>

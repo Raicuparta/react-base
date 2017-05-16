@@ -20,7 +20,6 @@ class Photos extends React.Component {
     ))
     return (
       <PaginatedPage currentUrl={'/photos/'}>
-        <h2>{lang.text('topMenu', 'photos')}</h2>
         <Grid>
           <Row>
             {photos}
